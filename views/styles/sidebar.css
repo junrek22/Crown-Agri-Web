@@ -1,0 +1,83 @@
+:root {
+    --borderColor:#FFFDF6;
+    --colorIcon:#FFFDF6;
+    --ImageSize: 110px;
+    --borderImageColor: #DDEB9D;
+    --colorText: #FFFDF6;
+}
+.side-bar {
+    border:1px solid var(--borderColor);
+    /* position:fixed; */
+    top:0;
+    background-color: #b8d576;
+}
+.sidebar-open {
+    width: 200px;
+    transition: 0.3s;
+}
+#hambuger-icon {
+    /* border:1px solid var(--borderColor); */
+    padding:10px;
+    display:flex;
+    justify-self: flex-end;
+}
+#hambuger-icon:hover {
+    cursor: pointer;
+    background-color: #537D5D;
+    transition: 0.3s;
+}
+.hamburger-button {
+   font-size: 1.8em;
+   color: var(--colorIcon);
+}
+.admin-profile {
+    /* border:1px solid var(--borderColor); */
+    padding:10px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.profile-appear {
+    display:flex;
+}
+.profile-disappear, .sidebar-disappear {
+    display:none;
+}
+.admin-profile img {
+    width:var(--ImageSize);
+    height:var(--ImageSize);
+    border-radius: 50%;
+    border: 1px solid var(--borderImageColor);
+}
+.admin-name {
+    font-size: 1.5em;
+    color: var(--colorIcon);
+    margin-bottom: 10px;
+}
+.side-bar-content {
+    /* border: 1px solid var(--borderColor); */
+}
+#sidebar-menu {
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
+#sidebar-menu a {
+    text-decoration: none;
+    color: var(--colorIcon);
+}
+#sidebar-menu li:hover {
+    color: var(--colorText);
+    background-color: #537D5D;
+    transition: 0.3s;
+}
+#sidebar-menu li {
+    font-size: 1em;
+    padding: 15px;
+    border-top: .5px solid var(--borderColor);
+    color: var(--colorText);
+    cursor: pointer;
+}
+.sidebar-icons {
+    margin-right:15px
+}
