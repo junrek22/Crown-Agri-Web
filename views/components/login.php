@@ -1,30 +1,38 @@
+<link rel="stylesheet" href="plugins/assets/css/login.css">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 <div id="login-wrapper">
-    <div id="login-form">
-        <h2>CROWN AGRI TRADING CORP.</h2>
+    <form id="loginPost" class="container" method="POST">
+        <img src="plugins/assets/images/lg_logo.png" alt="Company Logo" class="login-logo">
         
-        <form id="loginPost" method="POST">
-            <h3>LOGIN</h3>
-            <div class="login-input">
-                
-                <input id="username" type="text" name="username" required class="input-field"/>
-                <span>Username</span>
+        <section class="input-box">
+            <input type="text" id="username" placeholder="Username" required>
+            <i class='bx bxs-user'></i>
+        </section>
+
+        <section class="input-box">
+            <input type="password" id="password" placeholder="Password" required>
+            <i class='bx bxs-lock-alt'></i>
+        </section>
+
+        <section class="remember-forgot-box">
+            <div class="remember-me">
+                <input type="checkbox" name="remember-me" id="remember-me">
+                <label for="remember-me">
+                    <h5>Remember me</h5>
+                </label>
             </div>
-            <div class="login-input">
-                
-                <input id="password" type="password" name="password" required class="input-field"/>
-                <span>Password</span>
-            </div>
-            
-            <button type="submit" id="login-btn">Login</button>      
-        </form>
-        <div id="login-footer">
-            <p>Didn't know your password? <a href="">Forgot password</a></p>
-            <p>Don't have account? <a href="">Sign here</a></p>
-        </div>
-        
-    </div>
+            <a class="forgot-password" href="#">Forgot password?</a>
+        </section>
+
+        <button class="login-button" type="submit">Login</button>
+
+        <h5 class="dont-have-an-account">
+            Don't have an account?
+            <a href="register.php"><b>Register</b></a>
+        </h5>
+    </form>
 </div>
-<script>
+<!-- <script>
     const placeholder = document.querySelectorAll('span');
     const inputForm = document.querySelectorAll('.input-field');
     inputForm[0].addEventListener('blur', function() {
@@ -42,5 +50,5 @@
         }
     });
 
-</script>
+</script> -->
 

@@ -19,12 +19,11 @@ class ModelAuthentication {
                 $_SESSION['user_id'] = $result['id'];
                 $_SESSION['user_type'] = $result['user_type'];
                 return json_encode(array("status" => 200, "message" => "Login successful"));
-            } else {
-                return json_encode(array("status" => 401, "message" => "Invalid password"));
             }
         }
         $db = null;
         $user_stmt = null;
+        return json_encode(array("status" => 401, "message" => "Invalid password"));
     }   
 }
 
