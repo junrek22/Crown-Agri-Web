@@ -13,10 +13,9 @@ body {
     flex-direction: row;
 }
 #component-wrapper {
-    /* border:5px solid red; */
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
-#component-header {
-    height:200vh;
+#component-contents {
+    padding: 20px;
 }

@@ -1,0 +1,14 @@
+#navbar {
+    /* background-color: #F8ED8C; */
+    color: white;
+    padding: 10px; 
+    /* position: sticky; */
+    top: 0px;
+    /* z-index: 1000; */
+}
+#navbar h2 {
+    /* margin: 0; */
+    margin-left:20px;
+    margin-bottom: 0;
+    color:#537D5D;
+}

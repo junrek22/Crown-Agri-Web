@@ -6,7 +6,7 @@
     --colorText: #FFFDF6;
 }
 .side-bar {
-    border:1px solid var(--borderColor);
+    /* border:1px solid var(--borderColor); */
     /* position:fixed; */
     top:0;
     background-color: #b8d576;
