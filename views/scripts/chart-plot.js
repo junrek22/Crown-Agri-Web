@@ -10,7 +10,7 @@ function getRandomData(column, row, min, max) {
   }
   return data;
 }
-
+const labels_tags = ["Oils","Seeds","Chemicals","Fertilizer"];
 // Chart.defaults.set('plugins.datalabels', {
 //   // color: '#FE777B'
 // });
@@ -20,26 +20,26 @@ const chart1 = {
   data: {
     labels: ['2020', '2021', '2022', '2023'],
     datasets: [{
-        label: 'Nara (Main)',
+        label: labels_tags[0],
         data:randomData[0],
         backgroundColor: ['#328E6E',],
         borderColor: ['#537D5D'],
         borderWidth: borderWidth,
         
     },{
-        label:'Sagay',
+        label:labels_tags[1],
         data:randomData[1],
         backgroundColor: ['#67AE6E',],
         borderColor: ['#73946B'],
         borderWidth: borderWidth,
     },{
-        label: 'Kabankalan',
+        label: labels_tags[2],
         data:randomData[2],
         backgroundColor: ['#90C67C',],
         borderColor: ['#9EBC8A'],
         borderWidth: borderWidth,
     },{
-        label: 'Bago',
+        label: labels_tags[3],
         data:randomData[3],
         backgroundColor: ['#E1EEBC',],
         borderColor: ['#D2D0A0'],
