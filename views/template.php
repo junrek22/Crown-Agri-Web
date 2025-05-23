@@ -1,13 +1,9 @@
 <?php session_start();
     $page = isset($_GET['route']) ? $_GET['route'] : '';
-    if($page == 'logout') {
-        $_SESSION = [];
-        session_destroy();
-        // echo `<script>window.location.href = "logout";</script>`;
-    }
+    if($page == 'logout') {$_SESSION = [];session_destroy();}
     $session_login = isset($_SESSION['login']) ? $_SESSION['login'] : false;
     $session_user_type = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : "Unknown";
-    $routes_admin = ['dashboard', 'branch', 'sales', 'users', 'logout'];
+    $routes_admin = ['dashboard', 'branch', 'sales', 'users'];
     $routes_users = [];
 ?>
 <!DOCTYPE html>
@@ -15,32 +11,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php 
-       $title = isset($_GET['route']) ? $_GET['route'] : 'Login';
-        echo ucfirst($title); 
-    ?></title>
+    <title>Page</title>
     <!-- SCRIPTS AND STYLES THAT NEED TO LOAD FIRST -->
     <!-- SCRIPT LIBRARIES -->
     <script src="plugins/JQuery/jquery-3.7.1.min.js"></script>
+    <?php if(in_array($page, $routes_admin)): ?>
+        <!-- DASHBOARD STYLES AND ANIMATION -->
+        <link rel="stylesheet" href="plugins/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
+        <link rel="stylesheet" href="plugins/assets/css/font-icons/entypo/css/entypo.css">
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
+        <link rel="stylesheet" href="plugins/assets/css/bootstrap.css">
+        <link rel="stylesheet" href="plugins/assets/css/neon-core.css">
+        <link rel="stylesheet" href="plugins/assets/css/neon-theme.css">
+        <link rel="stylesheet" href="plugins/assets/css/neon-forms.css">
+        <link rel="stylesheet" href="plugins/assets/css/custom.css">
+        <link rel="stylesheet" href="plugins/assets/css/skins/green.css">
+        <link rel="stylesheet" href="plugins/assets/css/monthy_report.css">
+        <link rel="stylesheet" href="plugins/assets/css/quarterly_report.css">
+        <link rel="stylesheet" href="plugins/assets/css/annual_report.css">
 
-    <!-- DASHBOARD STYLES AND ANIMATION -->
-    <link rel="stylesheet" href="plugins/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
-    <link rel="stylesheet" href="plugins/assets/css/font-icons/entypo/css/entypo.css">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
-    <link rel="stylesheet" href="plugins/assets/css/bootstrap.css">
-    <link rel="stylesheet" href="plugins/assets/css/neon-core.css">
-    <link rel="stylesheet" href="plugins/assets/css/neon-theme.css">
-    <link rel="stylesheet" href="plugins/assets/css/neon-forms.css">
-    <link rel="stylesheet" href="plugins/assets/css/custom.css">
-    <link rel="stylesheet" href="plugins/assets/css/skins/green.css">
-    <link rel="stylesheet" href="plugins/assets/css/monthy_report.css">
-    <link rel="stylesheet" href="plugins/assets/css/quarterly_report.css">
-    <link rel="stylesheet" href="plugins/assets/css/annual_report.css">
-
-    <!-- CHARTS! -->
-    <script src="plugins/chart-js/chart.js"></script>
-    <script src="plugins/chart-js/chartjs-plugin-datalabels.js"></script>
-    <script src="views/scripts/chart-plot.js"></script>
+        
+        <!-- CHARTS! -->
+        <script src="plugins/chart-js/chart.js"></script>
+        <script src="plugins/chart-js/chartjs-plugin-datalabels.js"></script>
+        <script src="views/scripts/chart-plot.js"></script>
+    <?php elseif($page== '' || $page == 'logout'): ?>
+        <!-- LOGIN SCRIPTS AND STYLES MADE BY CHMSCU SCRIPTS -->
+        <link rel="stylesheet" href="plugins/assets/css/login.css">
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <?php endif; ?>
 </head> 
 <body class="page-body page-left-in" data-url="http://neon.dev">
     <?php if($session_login): ?>
@@ -74,8 +73,6 @@
     <?php endif; ?>
 </body>
 </html>
-
-
 <!-- MY SCRIPTS AND STYLES -->
 <link rel="stylesheet" type="text/css" href="views/styles/dashboard.css">
 
@@ -84,6 +81,9 @@
 
 <!-- GLOBAL SCRIPT -->
 <!-- <script>jQuery.fx.off = true;</script> -->
+
+
+
 
 <!-- ADDITIONAL SCRIPTS -->
 <script src="plugins/assets/js/gsap/TweenMax.min.js"></script>

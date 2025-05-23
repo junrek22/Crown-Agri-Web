@@ -1,7 +1,3 @@
-<!-- LOGIN SCRIPTS AND STYLES MADE BY CHMSCU SCRIPTS -->
-<link rel="stylesheet" href="plugins/assets/css/login.css">
-<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-
 <div id="login-wrapper">
     <form id="loginPost" class="container" method="POST">
         <img src="plugins/assets/images/lg_logo.png" alt="Company Logo" class="login-logo">
