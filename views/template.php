@@ -44,7 +44,8 @@
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <?php endif; ?>
 </head> 
-<body class="page-body page-left-in" data-url="http://neon.dev">
+<!-- <body class="page-body page-left-in" data-url="http://neon.dev"> -->
+<body>
     <?php if($session_login && (in_array($page, array_merge($routes_admin, $routes_users)) || $page == '')): ?>
     <div class="page-container">
         <?php include 'components/sidebar.php'; 
