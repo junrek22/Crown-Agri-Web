@@ -68,12 +68,12 @@
                         </a>
                         <ul class="visible">
                             <li>
-                                <a href="index.html">
+                                <a href="sales">
                                     <span class="title">Sales Forecast</span>
                                 </a>
                             </li>
                             <li class="active">
-                                <a href="dashboard-2.html">
+                                <a href="users">
                                     <span class="title">User</span>
                                 </a>
                             </li>

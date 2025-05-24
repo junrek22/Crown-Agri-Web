@@ -27,9 +27,9 @@
     <hr />
     <!-- Welcome Section -->
     <div class="row">
-        <div class="col-sm-12" style="text-align: left;">
-            <div class="well" style="text-align: left;">
-                <h2>Welcome Dear User, <strong>Ann Smith</strong></h2>
+        <div class="col-sm-12">
+            <div class="well" >
+                <h2 style="text-align: left;">Welcome Dear User, <strong>Ann Smith</strong></h2>
             </div>
         </div>
     </div>
