@@ -30,7 +30,6 @@
         <link rel="stylesheet" href="plugins/assets/css/quarterly_report.css">
         <link rel="stylesheet" href="plugins/assets/css/annual_report.css">
 
-        
         <!-- CHARTS! -->
         <script src="plugins/chart-js/chart.js"></script>
         <script src="plugins/chart-js/chartjs-plugin-datalabels.js"></script>
