@@ -21,12 +21,15 @@
     <!-- JQUERY LIBRARY -->
     <!-- <script src="plugins/JQuery/jquery-3.7.1.min.js"></script> -->
     <script src="plugins/assets/js/jquery-1.11.3.min.js"></script>
-  
+
     <!-- DATA TABLES! -->
     <script src="plugins/data-tables/dataTables.min.js"></script>
     <link rel="stylesheet" href="views/styles/data-tables.css">
     <!-- BOOTSTRAP -->
     <script src="plugins/assets/js/bootstrap.js"></script>
+
+    <!-- SWEET ALERT  -->
+    <script src="plugins/sweet-alert/sweetalert2@11.js"></script>
    
     <?php if(($session_login && $session_user_type == 'admin') && (in_array($page, array_merge($routes_admin, $routes_users)) || $page == '')): ?>
         <!-- DASHBOARD STYLES AND ANIMATION -->

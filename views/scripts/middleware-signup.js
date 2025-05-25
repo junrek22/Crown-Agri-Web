@@ -2,10 +2,10 @@ $(document).ready(function() {
   const table = $('#userTable').DataTable({
       dom: '<"dropdown-search"<"search-bar"f><"dropdown"l>>rt<"bottom"<"info"i><"paging"p>><"clear">'
   });
-  
+
   $("#signUpPost").submit(function(e) {
     e.preventDefault();
-
+    
     let f_name = $("#first-name").val();
     let l_name = $("#last-name").val();
     let username = $("#username").val();
@@ -25,6 +25,9 @@ $(document).ready(function() {
     newUser.append("username", username);
     newUser.append("password", password);
     newUser.append("branch", branch);
+
+    // const myModal = bootstrap.Modal.getInstance(document.getElementById('create_user_modal'));
+    $('#create_user_modal').modal('hide');
     $.ajax({
       type: "POST",
       url: "middleware/middleware-Signup.php",
@@ -41,9 +44,20 @@ $(document).ready(function() {
             data[1],
             data[2],
           ]).draw();
-          alert("Response from server: " + jsonResponse.message);
+
+          Swal.fire({
+              title: "User registration Success!",
+              icon: "success",
+              draggable: true
+          });
+
         } catch (e) {
-          alert("Invalid JSON response from server.");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Invalid JSON response from server.",
+            footer: '<a href="#">Why do I have this issue?</a>'
+          });
         }
       },
       error: function(xhr, status, error) {
