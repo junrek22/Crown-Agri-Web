@@ -1,5 +1,6 @@
 const borderWidth = 3;
-const randomData = getRandomData(4, 7, 500, 10000);
+const randomData = getRandomData(4, 4, 500, 10000);
+const randomData1 = getRandomData(4, 4, 500, 10000);
 function getRandomData(column, row, min, max) {
   const data = [];
   for(let j = 0; j < row; j++){ 
@@ -25,7 +26,6 @@ const chart1 = {
         backgroundColor: ['#328E6E',],
         borderColor: ['#537D5D'],
         borderWidth: borderWidth,
-        
     },{
         label:labels_tags[1],
         data:randomData[1],
@@ -44,7 +44,10 @@ const chart1 = {
         backgroundColor: ['#E1EEBC',],
         borderColor: ['#D2D0A0'],
         borderWidth: borderWidth,
-    }]
+    }],
+    font :{
+      weight:'bold',
+    }
   },
   options: {
     // responsive: false, // <--- disables responsiveness
@@ -70,16 +73,18 @@ const chart1 = {
         }
       },
       x : {
-        grid: {
-          display: false,
-        },
-        title: {
+        grid: {display: false},
+        ticks :{
           font: {
-            size: 14,           // Larger font size for labels
-            weight: 'bold'      // Optional: bold text
+            weight: 'bold',
+           
           },
-        },
+          color: '#537D5D',
+        }
       }
+    },
+    plugins : {
+      
     }
   }
 }
@@ -89,27 +94,27 @@ const chart2 = {
   data: {
     labels: ['2020', '2021', '2022', '2023'],
     datasets: [{
-        label: 'Nara (Main)',
-        data:randomData[0],
+        label: labels_tags[0],
+        data:randomData1[0],
         backgroundColor: ['#328E6E',],
         borderColor: ['#537D5D'],
         borderWidth: borderWidth,
         
     },{
-        label:'Sagay',
-        data:randomData[1],
+        label:labels_tags[1],
+        data:randomData1[1],
         backgroundColor: ['#67AE6E',],
         borderColor: ['#73946B'],
         borderWidth: borderWidth,
     },{
-        label: 'Kabankalan',
-        data:randomData[2],
+        label: labels_tags[2],
+        data:randomData1[2],
         backgroundColor: ['#90C67C',],
         borderColor: ['#9EBC8A'],
         borderWidth: borderWidth,
     },{
-        label: 'Bago',
-        data:randomData[3],
+        label: labels_tags[3],
+        data:randomData1[3],
         backgroundColor: ['#E1EEBC',],
         borderColor: ['#D2D0A0'],
         borderWidth: borderWidth,
@@ -204,9 +209,10 @@ const chart4 = {
   type: 'pie',
   data: {
       labels: [
-      'Red',
-      'Blue',
-      'Yellow'
+      'Oil',
+      'Fertilizer',
+      'Seeds',
+      'Chemicals',
     ],
     datasets: [{
       // label: 'My First Dataset',

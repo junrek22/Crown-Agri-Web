@@ -1,38 +1,19 @@
 .chart-container {
-    /* width: 200;
-    height:800px; */
-    /* margin: 0 auto; */
-    /* display: flex;
-    justify-content: space-evenly; */
-    /* flex-wrap :wrap; */
-    /* width: 100%; */
     display: grid;
     grid-template-columns: 49% 49%;
     grid-template-rows: 47% 47%;
     justify-content: space-between;
-    row-gap: 30px;
-    /* gap: 10px; */
-    /* justify-content: space-between; */
-    /* column-gap: 10px; */
-    /* border:1px solid red; */
-    /* justify-content: space-evenly; */
+    row-gap: 20px;
 }
 .chart {
-    /* width: 400px;
-    height: 400px; */
-    /* margin: 0 auto; */
     /* border:1px solid red; */
 }
 #dashboard {
     /* border:1px solid blue; */
-    /* width: 100%; */
 }
 .plot-chart {
-    border:5px solid #537D5D;
-    /* border-right-width: 0px; */
-    border-radius: 10px;
-    /* width: 50vw; */
-    /* height: 500px; */
+    border:2px solid #537D5D;
+    border-radius: 5px;
     padding: 20px;
 }
 .plot-chart h3 {

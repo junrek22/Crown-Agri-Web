@@ -1,6 +1,6 @@
 <?php session_start();
     $page = isset($_GET['route']) ? $_GET['route'] : '';
-    $routes_admin = ['dashboard', 'branch', 'sales', 'users'];
+    $routes_admin = ['dashboard', 'user-register'];
     $routes_users = ['home'];
     if($page == 'logout') {
         $_SESSION = [];
@@ -16,9 +16,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page</title>
     <!-- SCRIPTS AND STYLES THAT NEED TO LOAD FIRST -->
-    <!-- SCRIPT LIBRARIES -->
+    <!-- SCRIPT LIBRARIES AND STYLES -->
     <script src="plugins/JQuery/jquery-3.7.1.min.js"></script>
-
+    <script src="plugins/assets/js/jquery-1.11.3.min.js"></script>
+   
     <?php if(($session_login && $session_user_type == 'admin') && (in_array($page, array_merge($routes_admin, $routes_users)) || $page == '')): ?>
         <!-- DASHBOARD STYLES AND ANIMATION -->
         <link rel="stylesheet" href="plugins/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
@@ -38,6 +39,11 @@
         <script src="plugins/chart-js/chart.js"></script>
         <script src="plugins/chart-js/chartjs-plugin-datalabels.js"></script>
         <script src="views/scripts/chart-plot.js"></script>
+        <!-- DATA TABLES! -->
+         
+        <script src="plugins/data-tables/dataTables.min.js"></script>
+        <link rel="stylesheet" href="views/styles/data-tables.css">
+
     <?php elseif(in_array($page, array_merge($routes_admin, $routes_users)) || $page== '' || $page == 'logout'|| $page == 'login'): ?>
         <!-- LOGIN SCRIPTS AND STYLES MADE BY CHMSCU SCRIPTS -->
         <link rel="stylesheet" href="plugins/assets/css/login.css">
@@ -48,9 +54,12 @@
 <body>
     <?php if($session_login && (in_array($page, array_merge($routes_admin, $routes_users)) || $page == '')): ?>
     <div class="page-container">
-        <?php include 'components/sidebar.php'; 
-        $page = isset($_GET['route']) ? $_GET['route'] : 'dashboard';
+        <?php include 'components/sidebar.php';?>
+        <!-- Main Content -->
+        <div class="main-content">
+       <?php $page = isset($_GET['route']) ? $_GET['route'] : 'dashboard';
         if($session_user_type == 'admin'){
+            include 'components/adminHeader.php';
             if(in_array($page, $routes_admin)){
                 include 'components/'.$page.'.php';
             }else{
@@ -65,21 +74,12 @@
         }else{
             include 'components/404.php';
         }
-        // if($session_login && $session_user_type == 'admin'){
-        //     if(in_array($page, $routes_admin)){
-        //         include 'components/'.$page.'.php';
-        //     }else{
-        //         include 'components/404.php';
-        //     }
-        // }else if($session_login && $session_user_type == 'user'){
-        //     if(in_array($page, $routes_users)){
-        //         include 'components/'.$page.'.php';
-        //     }else{
-        //         include 'components/404.php';
-        //         // header("Location: 404");
-        //     }
-        // }
         ?>
+            <!-- Footer -->
+            <footer class="main">
+                <a>&copy; 2025 <strong>CATCORP</strong> All Rights Reserved</a>
+            </footer>
+        </div>
     </div>
     <?php else: ?>
         <?php 
@@ -122,9 +122,13 @@
 <!-- Imported styles on this page -->
 <link rel="stylesheet" href="plugins/assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
 <link rel="stylesheet" href="plugins/assets/js/rickshaw/rickshaw.min.css">
+<!-- <script src="plugins/bootstrap/js/bootstrap.js"></script> -->
+<!-- <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css"> -->
 
 <!-- GLOBAL SCRIPT -->
 <!-- <script>jQuery.fx.off = true;</script> -->
+
+
 
 
 

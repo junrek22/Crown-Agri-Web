@@ -24,10 +24,10 @@
 
         <button class="login-button" type="submit">Login</button>
 
-        <h5 class="dont-have-an-account">
+        <!-- <h5 class="dont-have-an-account">
             Don't have an account?
             <a href="register.php"><b>Register</b></a>
-        </h5>
+        </h5> -->
     </form>
 </div>
 <!-- <script>
