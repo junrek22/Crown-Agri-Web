@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  const table = $('#userTable').DataTable({
+      dom: '<"dropdown-search"<"search-bar"f><"dropdown"l>>rt<"bottom"<"info"i><"paging"p>><"clear">'
+  });
+  
   $("#signUpPost").submit(function(e) {
     e.preventDefault();
 
@@ -30,6 +34,13 @@ $(document).ready(function() {
       success: function(response) {
         try {
           const jsonResponse = JSON.parse(response);
+          const getData = jsonResponse.data;
+          const data = [getData.userAuth, getData.Fullname, getData.branch];
+           table.row.add([
+            data[0],
+            data[1],
+            data[2],
+          ]).draw();
           alert("Response from server: " + jsonResponse.message);
         } catch (e) {
           alert("Invalid JSON response from server.");

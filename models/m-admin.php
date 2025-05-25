@@ -16,7 +16,8 @@ class AdminModel {
         $createUserAccount = (new AdminModel)->createUserAccount($userAuth, $firstname, $lastname, $branch);
         $db = null;
         $stmt = null;
-        return json_encode(array("status" => 200, "message" => "User created successfully"));
+        $data_array = array("userAuth" => $userAuth, "Fullname" => $firstname." ".$lastname, "branch" => $branch);
+        return json_encode(array("status" => 200, "message" => "User created successfully", "data" => $data_array));
     }
     public function createUserAccount($userAuth, $firstname, $lastname, $branch){
         $db = (new Connection)->connection();
@@ -31,7 +32,7 @@ class AdminModel {
     }
     public function displayUserAcount(){
         $db = (new Connection)->connection();
-        $stmt = $db->prepare("SELECT userAuth, Firstname, Lastname, Branch FROM userAccount");
+        $stmt = $db->prepare("SELECT userAuth, Firstname, Lastname, Branch FROM userAccount ORDER BY id DESC");
         $stmt->execute();
         if($stmt->rowCount() > 0){
             return $stmt->fetchAll();

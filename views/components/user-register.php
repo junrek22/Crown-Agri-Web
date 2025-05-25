@@ -73,16 +73,6 @@
         </form>
     </div>
 </div>
-<script>
-    $(document).ready(function() {
-        const table = $('#userTable').DataTable({
-            dom: '<"dropdown-search"<"search-bar"f><"dropdown"l>>rt<"bottom"<"info"i><"paging"p>><"clear">'
-        });
-        // table.row.add({
-
-        // }).draw();
-    });
-</script>
 <style>
     .panel-design {
         border-bottom:1px solid #00a651;
@@ -104,7 +94,7 @@
     }.modal-create-user {
         display: table;
         width: auto;
-        max-width: 100%;
-        max-width: 90vw; 
+        /* max-width: 100%; */
+        /* max-width: 90vw;  */
     }
 </style>

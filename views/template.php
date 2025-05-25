@@ -17,8 +17,16 @@
     <title>Page</title>
     <!-- SCRIPTS AND STYLES THAT NEED TO LOAD FIRST -->
     <!-- SCRIPT LIBRARIES AND STYLES -->
-    <script src="plugins/JQuery/jquery-3.7.1.min.js"></script>
+
+    <!-- JQUERY LIBRARY -->
+    <!-- <script src="plugins/JQuery/jquery-3.7.1.min.js"></script> -->
     <script src="plugins/assets/js/jquery-1.11.3.min.js"></script>
+  
+    <!-- DATA TABLES! -->
+    <script src="plugins/data-tables/dataTables.min.js"></script>
+    <link rel="stylesheet" href="views/styles/data-tables.css">
+    <!-- BOOTSTRAP -->
+    <script src="plugins/assets/js/bootstrap.js"></script>
    
     <?php if(($session_login && $session_user_type == 'admin') && (in_array($page, array_merge($routes_admin, $routes_users)) || $page == '')): ?>
         <!-- DASHBOARD STYLES AND ANIMATION -->
@@ -31,7 +39,7 @@
         <link rel="stylesheet" href="plugins/assets/css/neon-forms.css">
         <link rel="stylesheet" href="plugins/assets/css/custom.css">
         <link rel="stylesheet" href="plugins/assets/css/skins/green.css">
-        <link rel="stylesheet" href="plugins/assets/css/monthy_report.css">
+        <!-- <link rel="stylesheet" href="plugins/assets/css/monthy_report.css"> -->
         <link rel="stylesheet" href="plugins/assets/css/quarterly_report.css">
         <link rel="stylesheet" href="plugins/assets/css/annual_report.css">
 
@@ -39,10 +47,6 @@
         <script src="plugins/chart-js/chart.js"></script>
         <script src="plugins/chart-js/chartjs-plugin-datalabels.js"></script>
         <script src="views/scripts/chart-plot.js"></script>
-        <!-- DATA TABLES! -->
-         
-        <script src="plugins/data-tables/dataTables.min.js"></script>
-        <link rel="stylesheet" href="views/styles/data-tables.css">
 
     <?php elseif(in_array($page, array_merge($routes_admin, $routes_users)) || $page== '' || $page == 'logout'|| $page == 'login'): ?>
         <!-- LOGIN SCRIPTS AND STYLES MADE BY CHMSCU SCRIPTS -->
@@ -101,7 +105,6 @@
 <!-- ADDITIONAL SCRIPTS -->
 <script src="plugins/assets/js/gsap/TweenMax.min.js"></script>
 <script src="plugins/assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
-<script src="plugins/assets/js/bootstrap.js"></script>
 <script src="plugins/assets/js/joinable.js"></script>
 <script src="plugins/assets/js/resizeable.js"></script>
 <script src="plugins/assets/js/neon-api.js"></script>
@@ -122,8 +125,6 @@
 <!-- Imported styles on this page -->
 <link rel="stylesheet" href="plugins/assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
 <link rel="stylesheet" href="plugins/assets/js/rickshaw/rickshaw.min.css">
-<!-- <script src="plugins/bootstrap/js/bootstrap.js"></script> -->
-<!-- <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css"> -->
 
 <!-- GLOBAL SCRIPT -->
 <!-- <script>jQuery.fx.off = true;</script> -->
