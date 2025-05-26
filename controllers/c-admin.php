@@ -9,8 +9,9 @@ class ControllerAdmin {
         $createUserAccount = (new AdminModel)->displayUserAcount();
         return $createUserAccount;
     }
-    public function ControllerDeleteUserAccount() {
-        $deleteUserAccount = (new AdminModel)->ModelDeleteUserAccount();
+    public function ControllerDeleteUserAccount($userAuth) {
+        require_once "../models/m-admin.php";
+        $deleteUserAccount = (new AdminModel)->ModelDeleteUserAccount($userAuth);
         return $deleteUserAccount;
     }
 }

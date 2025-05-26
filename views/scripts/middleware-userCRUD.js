@@ -4,50 +4,61 @@ $(document).ready(function() {
       ordering: false
   });
 
-$(".deleteButton").click(function(){
-  var dataRow = table.row($(this).parents('tr')).data();
-  Swal.fire({
-  title: "Do you want to delete this user?",
-  text: "You won't be able to revert this user: " + dataRow[0],
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, delete it!"
-  }).then((result) => {
-    if(result.isConfirmed) {
-      userAuth = dataRow[0];
-      $.ajax({
-       type: "POST",
-       url: "middleware/middleware-deleteUser.php",
-       data: {userAuth: userAuth},
-       processData: false,
-       contentType: false,
-       success: function(response){
-        try{
-          const getData = JSON.parse(response)
-          console.log(getData);
-          Swal.fire({
-          title: "Deleted!",
-          text: "The user has been deleted.",
-          icon: "success"
-          });
-        }catch(e){
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Invalid JSON response from server.",
-            footer: '<a href="#">Why do I have this issue?</a>'
-          });
-        }
-       },
-       error: function(xhr, status, error) {
-        alert("AJAX Error: " + error);
-        }
-      });
-    }
+  $(".deleteButton").click(function(){
+    var dataRow = table.row($(this).parents('tr')).data();
+    Swal.fire({
+    title: "Do you want to delete this user?",
+    text: "You won't be able to revert this user: " + dataRow[0],
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if(result.isConfirmed) {
+        const userAuth = dataRow[0];
+        table.row($(this).parents('tr')).remove().draw();
+        $.ajax({
+        type: "POST",
+        url: "middleware/middleware-deleteUser.php",
+        data: {userAuth: userAuth},
+        //  processData: false,
+        //  contentType: false,
+        success: function(response){
+          try{
+            const getData = JSON.parse(response);
+            console.log(getData.status);
+            if(getData.status == 200){
+              Swal.fire({
+              title: "Deleted!",
+              text: "The user has been deleted.",
+              icon: "success"
+              });
+            }else{
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: getData.message,
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
+            }
+          }catch(e){
+            console.log(e);
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Invalid JSON response from server.",
+              footer: '<a href="#">Why do I have this issue?</a>'
+            });
+          }
+        },
+        error: function(xhr, status, error) {
+          alert("AJAX Error: " + error);
+          }
+        });
+      }
+    });
   });
-});
 
   $("#signUpPost").submit(function(e) {
     e.preventDefault();
@@ -112,4 +123,5 @@ $(".deleteButton").click(function(){
       }
     });
   });
+
 });

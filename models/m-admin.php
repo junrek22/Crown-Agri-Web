@@ -40,9 +40,26 @@ class AdminModel {
         $stmt = null;
         $db = null;
     }
-    public function ModelDeleteUserAccount() {
+    public function ModelDeleteUserAccount($userAuth) {
         $db = (new Connection)->connection();
-        
+        $stmtUserLog = $db->prepare("DELETE FROM loginAuth WHERE userAuth = :userAuthLog");
+        $stmtUserLog->bindParam(":userAuthLog", $userAuth, PDO::PARAM_STR);
+        $stmtUserAccount = $db->prepare("DELETE FROM userAccount WHERE userAuth = :userAuthAccount");
+        $stmtUserAccount->bindParam(":userAuthAccount", $userAuth, PDO::PARAM_STR);
+        $stmtUserLog->execute();
+        $stmtUserAccount->execute();
+        $result = "";
+        if($stmtUserLog->rowCount() > 0 && $stmtUserAccount->rowCount() > 0)
+        {
+             $result = json_encode(array("status" => 200, "message" => "User Deleted Successfully"));
+
+        }else{
+             $result = json_encode(array("status" => 500, "message" => "An error occurred while deleting the user account.", "count" => $stmtUserAccount->rowCount(),));
+        }
+        $stmtUserLog = null; 
+        $stmtUserAccount = null; 
+        $db = null; 
+        return $result;
     }
 }
 ?>
