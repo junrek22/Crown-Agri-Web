@@ -40,5 +40,9 @@ class AdminModel {
         $stmt = null;
         $db = null;
     }
+    public function ModelDeleteUserAccount() {
+        $db = (new Connection)->connection();
+        
+    }
 }
 ?>

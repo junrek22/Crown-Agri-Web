@@ -1,7 +1,53 @@
 $(document).ready(function() {
   const table = $('#userTable').DataTable({
-      dom: '<"dropdown-search"<"search-bar"f><"dropdown"l>>rt<"bottom"<"info"i><"paging"p>><"clear">'
+      dom: '<"dropdown-search"<"search-bar"f><"dropdown"l>>rt<"bottom"<"info"i><"paging"p>><"clear">',
+      ordering: false
   });
+
+$(".deleteButton").click(function(){
+  var dataRow = table.row($(this).parents('tr')).data();
+  Swal.fire({
+  title: "Do you want to delete this user?",
+  text: "You won't be able to revert this user: " + dataRow[0],
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+  }).then((result) => {
+    if(result.isConfirmed) {
+      userAuth = dataRow[0];
+      $.ajax({
+       type: "POST",
+       url: "middleware/middleware-deleteUser.php",
+       data: {userAuth: userAuth},
+       processData: false,
+       contentType: false,
+       success: function(response){
+        try{
+          const getData = JSON.parse(response)
+          console.log(getData);
+          Swal.fire({
+          title: "Deleted!",
+          text: "The user has been deleted.",
+          icon: "success"
+          });
+        }catch(e){
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Invalid JSON response from server.",
+            footer: '<a href="#">Why do I have this issue?</a>'
+          });
+        }
+       },
+       error: function(xhr, status, error) {
+        alert("AJAX Error: " + error);
+        }
+      });
+    }
+  });
+});
 
   $("#signUpPost").submit(function(e) {
     e.preventDefault();
@@ -43,6 +89,7 @@ $(document).ready(function() {
             data[0],
             data[1],
             data[2],
+            `<a style="margin:0px 5px;" type="button" class="btn btn-success">Update</a><a style="margin:0px 5px;" type="button" class="btn btn-danger deleteButton">Delete</a>`
           ]).draw();
 
           Swal.fire({

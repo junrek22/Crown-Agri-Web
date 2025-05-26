@@ -58,7 +58,8 @@
     <?php endif; ?>
 </head> 
 <!-- <body class="page-body page-left-in" data-url="http://neon.dev"> -->
-<body>
+<body class="page-body">
+<!-- <body> -->
     <?php if($session_login && (in_array($page, array_merge($routes_admin, $routes_users)) || $page == '')): ?>
     <div class="page-container">
         <?php include 'components/sidebar.php';?>
@@ -103,7 +104,7 @@
 <link rel="stylesheet" type="text/css" href="views/styles/dashboard.css">
 
 <script src="views/scripts/middleware-login.js"></script>
-<script src="views/scripts/middleware-signup.js"></script>
+<script src="views/scripts/middleware-userCRUD.js"></script>
 
 <!-- ADDITIONAL SCRIPTS -->
 <script src="plugins/assets/js/gsap/TweenMax.min.js"></script>

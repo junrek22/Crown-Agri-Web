@@ -18,7 +18,7 @@
                             <th>UserAuth</th>
                             <th>Full name</th>
                             <th>Branch</th>
-                            <!-- <th class="text-center">Graph</th> -->
+                            <th class="text-center">Option</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,6 +29,7 @@
                             <td><?php echo $value['userAuth'];?></td>
                             <td><?php echo $value['Firstname']." ".$value['Lastname'];?></td>
                             <td class="text-center"><?php echo $value['Branch'];?></td>
+                            <td id="td-buttons"><a type="button" class="btn btn-success">Update</a><a type="button" class="btn btn-danger deleteButton">Delete</a></td>
                         </tr>
                        <?php endforeach; ?>
                     </tbody>
@@ -37,9 +38,6 @@
         </div>
     </div>
 </div>
-
-
-
 <!-- MODAL -->
 <div class="modal fade" id="create_user_modal">
     <div class="modal-dialog modal-create-user ">
@@ -96,5 +94,7 @@
         width: auto;
         /* max-width: 100%; */
         /* max-width: 90vw;  */
+    }#td-buttons a{
+        margin:0px 5px;
     }
 </style>
