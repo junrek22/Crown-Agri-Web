@@ -1,11 +1,20 @@
 $(document).ready(function() {
+  function clearForm() {
+    $("#first-name").val('');
+    $("#mid-name").val('');
+    $("#last-name").val('');
+    $("#username").val('');
+    $("#password").val('');
+    $("#conf-password").val('');
+  }
   const table = $('#userTable').DataTable({
       dom: '<"dropdown-search"<"search-bar"f><"dropdown"l>>rt<"bottom"<"info"i><"paging"p>><"clear">',
       ordering: false
   });
 
-  $(".deleteButton").click(function(){
-    var dataRow = table.row($(this).parents('tr')).data();
+   $('#userTable tbody').on('click', '.deleteButton', function () {
+    let getRow = table.row($(this).parents('tr'));
+    let dataRow = getRow.data();
     Swal.fire({
     title: "Do you want to delete this user?",
     text: "You won't be able to revert this user: " + dataRow[0],
@@ -17,18 +26,16 @@ $(document).ready(function() {
     }).then((result) => {
       if(result.isConfirmed) {
         const userAuth = dataRow[0];
-        table.row($(this).parents('tr')).remove().draw();
         $.ajax({
         type: "POST",
         url: "middleware/middleware-deleteUser.php",
         data: {userAuth: userAuth},
-        //  processData: false,
-        //  contentType: false,
         success: function(response){
+          const getData = JSON.parse(response);
+          console.log(getData.status);
           try{
-            const getData = JSON.parse(response);
-            console.log(getData.status);
             if(getData.status == 200){
+              getRow.remove().draw();
               Swal.fire({
               title: "Deleted!",
               text: "The user has been deleted.",
@@ -58,30 +65,26 @@ $(document).ready(function() {
         });
       }
     });
+   
   });
-
   $("#signUpPost").submit(function(e) {
     e.preventDefault();
     
     let f_name = $("#first-name").val();
+    let m_name = $("#mid-name").val();
     let l_name = $("#last-name").val();
     let username = $("#username").val();
     let password = $("#password").val();
     let passwordConfirm = $("#conf-password").val();
-    let branch = $("#branch").val();
 
-    const branch_list = ["Narra", "Kabankalan", "Bago", "Sagay"];
-    const validBranch = branch_list.includes(branch);
-
-    if (!validBranch) return alert("Invalid branch selected.");
     if (passwordConfirm != password) return alert("Passwords do not match.");
 
     const newUser = new FormData();
     newUser.append("firstname", f_name);
+    newUser.append("middlename", m_name);
     newUser.append("lastname", l_name);
     newUser.append("username", username);
     newUser.append("password", password);
-    newUser.append("branch", branch);
 
     // const myModal = bootstrap.Modal.getInstance(document.getElementById('create_user_modal'));
     $('#create_user_modal').modal('hide');
@@ -93,13 +96,14 @@ $(document).ready(function() {
       contentType: false,
       success: function(response) {
         try {
-          const jsonResponse = JSON.parse(response);
-          const getData = jsonResponse.data;
-          const data = [getData.userAuth, getData.Fullname, getData.branch];
+           const jsonResponse = JSON.parse(response);
+           const getData = jsonResponse.data;
+           const data = [getData.userAuth, getData.Firstname, getData.Middlename, getData.Lastname];
            table.row.add([
             data[0],
             data[1],
             data[2],
+            data[3],
             `<a style="margin:0px 5px;" type="button" class="btn btn-success">Update</a><a style="margin:0px 5px;" type="button" class="btn btn-danger deleteButton">Delete</a>`
           ]).draw();
 
@@ -122,6 +126,6 @@ $(document).ready(function() {
         alert("AJAX Error: " + error);
       }
     });
+     clearForm();
   });
-
 });

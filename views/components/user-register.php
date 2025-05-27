@@ -9,29 +9,34 @@
             <div class="panel-body">
                 <div class="panel-design">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create_user_modal">
-                        Create Account
+                        Create Manager
                     </button>
                 </div>    
                 <table id="userTable" class="table table-responsive no-margin">
                     <thead>
                         <tr>
-                            <th>UserAuth</th>
-                            <th>Full name</th>
-                            <th>Branch</th>
+                            <th>User ID</th>
+                            <th>First name</th>
+                            <th>Middle name</th>
+                            <th>Last name</th>
                             <th class="text-center">Option</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
+
                         $client = (new ControllerAdmin)->ControllerdisplayUserAcount();
+                        if($client != null):
                         foreach($client as $key => $value): ?>
                         <tr>
-                            <td><?php echo $value['userAuth'];?></td>
-                            <td><?php echo $value['Firstname']." ".$value['Lastname'];?></td>
-                            <td class="text-center"><?php echo $value['Branch'];?></td>
+                            <td><?php echo $value['user_Auth'];?></td>
+                            <td><?php echo $value['first_name'];?></td>
+                            <td><?php echo $value['middle_name'];?></td>
+                            <td><?php echo $value['last_name'];?></td>
                             <td id="td-buttons"><a type="button" class="btn btn-success">Update</a><a type="button" class="btn btn-danger deleteButton">Delete</a></td>
                         </tr>
-                       <?php endforeach; ?>
+                       <?php endforeach; 
+                       endif;?>
                     </tbody>
                 </table>
             </div>
@@ -44,23 +49,17 @@
         <form id="signUpPost" method="POST" class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" style="font-size:1.5em; color: #00a651;">Create User</h4>
+                <h4 class="modal-title" style="font-size:1.5em; color: #00a651;">Create manager</h4>
             </div>
             <div class="modal-body">
                 <!-- <form action="" method="POST"> -->
                 <div id="form-createUser">
                     <input type="text" placeholder="First name" id="first-name" required>
+                    <input type="text" placeholder="Middle name" id="mid-name" required>
                     <input type="text" placeholder="Last name" id="last-name" required>
                     <input type="text" placeholder="Username" id="username" required>
                     <input type="Password" placeholder="Password" id="password" required>
                      <input type="Password" placeholder="Confirm Password" id="conf-password" required>
-                    <select name="" id="branch" required>
-                        <option value="">--Select Branch--</option>
-                        <option value="Narra">Narra</option>
-                        <option value="Kabankalan">Kabankalan</option>
-                        <option value="Bago">Bago</option>
-                        <option value="Sagay">Sagay</option>
-                    </select>
                 </div>
                 <!-- </form> -->
             </div>

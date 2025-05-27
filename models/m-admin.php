@@ -2,7 +2,7 @@
 require_once 'connection.php';
 
 class AdminModel {
-    public function createUserLogs($username, $password, $firstname, $lastname, $branch) {
+    public function createUserLogs($username, $password, $firstname, $lastname, $middleName) {
         $db = (new Connection)->connection();
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $db->prepare("INSERT INTO loginAuth (username, password, user_type, userAuth) VALUES (:username, :password, :user_type, :userAuth)");
@@ -13,26 +13,26 @@ class AdminModel {
         $stmt->bindParam(':user_type', $user_type, PDO::PARAM_STR);
         $stmt->bindParam(':userAuth', $userAuth, PDO::PARAM_STR);
         $stmt->execute();
-        $createUserAccount = (new AdminModel)->createUserAccount($userAuth, $firstname, $lastname, $branch);
+        $createUserAccount = (new AdminModel)->createUserAccount($userAuth, $firstname, $lastname, $middleName);
         $db = null;
         $stmt = null;
-        $data_array = array("userAuth" => $userAuth, "Fullname" => $firstname." ".$lastname, "branch" => $branch);
+        $data_array = array("userAuth" => $userAuth, "Firstname" => $firstname, "Lastname" => $lastname, "Middlename" => $middleName);
         return json_encode(array("status" => 200, "message" => "User created successfully", "data" => $data_array));
     }
-    public function createUserAccount($userAuth, $firstname, $lastname, $branch){
+    public function createUserAccount($userAuth, $firstname, $lastname, $middleName){
         $db = (new Connection)->connection();
-        $stmt = $db->prepare("INSERT INTO userAccount (userAuth, Firstname, Lastname, Branch) VALUES (:userAuth, :Firstname, :Lastname, :Branch)");
+        $stmt = $db->prepare("INSERT INTO userAccount (user_Auth, first_name, last_name, middle_name) VALUES (:userAuth, :Firstname, :Lastname, :middle_name)");
         $stmt->bindParam(":userAuth", $userAuth);
         $stmt->bindParam(":Firstname", $firstname);
         $stmt->bindParam(":Lastname", $lastname);
-        $stmt->bindParam(":Branch", $branch);
+        $stmt->bindParam(":middle_name", $middleName);
         $stmt->execute();
         $stmt = null;
         $db = null;
     }
     public function displayUserAcount(){
         $db = (new Connection)->connection();
-        $stmt = $db->prepare("SELECT userAuth, Firstname, Lastname, Branch FROM userAccount ORDER BY id DESC");
+        $stmt = $db->prepare("SELECT user_Auth, first_name, middle_name, last_name FROM userAccount ORDER BY user_account_id DESC");
         $stmt->execute();
         if($stmt->rowCount() > 0){
             return $stmt->fetchAll();
@@ -44,7 +44,7 @@ class AdminModel {
         $db = (new Connection)->connection();
         $stmtUserLog = $db->prepare("DELETE FROM loginAuth WHERE userAuth = :userAuthLog");
         $stmtUserLog->bindParam(":userAuthLog", $userAuth, PDO::PARAM_STR);
-        $stmtUserAccount = $db->prepare("DELETE FROM userAccount WHERE userAuth = :userAuthAccount");
+        $stmtUserAccount = $db->prepare("DELETE FROM userAccount WHERE user_Auth = :userAuthAccount");
         $stmtUserAccount->bindParam(":userAuthAccount", $userAuth, PDO::PARAM_STR);
         $stmtUserLog->execute();
         $stmtUserAccount->execute();

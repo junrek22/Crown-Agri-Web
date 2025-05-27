@@ -16,21 +16,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page</title>
     <!-- SCRIPTS AND STYLES THAT NEED TO LOAD FIRST -->
-    <!-- SCRIPT LIBRARIES AND STYLES -->
 
     <!-- JQUERY LIBRARY -->
-    <!-- <script src="plugins/JQuery/jquery-3.7.1.min.js"></script> -->
     <script src="plugins/assets/js/jquery-1.11.3.min.js"></script>
-
+     <!-- SWEET ALERT  -->
+    <script src="plugins/sweet-alert/sweetalert2@11.js"></script>
     <!-- DATA TABLES! -->
     <script src="plugins/data-tables/dataTables.min.js"></script>
     <link rel="stylesheet" href="views/styles/data-tables.css">
     <!-- BOOTSTRAP -->
     <script src="plugins/assets/js/bootstrap.js"></script>
-
-    <!-- SWEET ALERT  -->
-    <script src="plugins/sweet-alert/sweetalert2@11.js"></script>
-   
     <?php if(($session_login && $session_user_type == 'admin') && (in_array($page, array_merge($routes_admin, $routes_users)) || $page == '')): ?>
         <!-- DASHBOARD STYLES AND ANIMATION -->
         <link rel="stylesheet" href="plugins/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
@@ -59,30 +54,29 @@
 </head> 
 <!-- <body class="page-body page-left-in" data-url="http://neon.dev"> -->
 <body class="page-body">
-<!-- <body> -->
     <?php if($session_login && (in_array($page, array_merge($routes_admin, $routes_users)) || $page == '')): ?>
     <div class="page-container">
         <?php include 'components/sidebar.php';?>
         <!-- Main Content -->
         <div class="main-content">
-       <?php $page = isset($_GET['route']) ? $_GET['route'] : 'dashboard';
-        if($session_user_type == 'admin'){
-            include 'components/adminHeader.php';
-            if(in_array($page, $routes_admin)){
-                include 'components/'.$page.'.php';
-            }else{
-                include 'components/dashboard.php';
-            }
-        }else if($session_user_type == 'user'){
-            if(in_array($page, $routes_users)){
-                include 'components/'.$page.'.php';
-            }else{
-                include 'components/404.php';
-            }
-        }else{
-            include 'components/404.php';
-        }
-        ?>
+            <?php $page = isset($_GET['route']) ? $_GET['route'] : 'dashboard';
+                if($session_user_type == 'admin'){
+                    include 'components/adminHeader.php';
+                    if(in_array($page, $routes_admin)){
+                        include 'components/'.$page.'.php';
+                    }else{
+                        include 'components/dashboard.php';
+                    }
+                }else if($session_user_type == 'user'){
+                    if(in_array($page, $routes_users)){
+                        include 'components/'.$page.'.php';
+                    }else{
+                        include 'components/404.php';
+                    }
+                }else{
+                    include 'components/404.php';
+                }
+                ?>
             <!-- Footer -->
             <footer class="main">
                 <a>&copy; 2025 <strong>CATCORP</strong> All Rights Reserved</a>
@@ -99,7 +93,7 @@
         ?>
     <?php endif; ?>
 </body>
-</html>
+
 <!-- MY SCRIPTS AND STYLES -->
 <link rel="stylesheet" type="text/css" href="views/styles/dashboard.css">
 
@@ -132,6 +126,7 @@
 
 <!-- GLOBAL SCRIPT -->
 <!-- <script>jQuery.fx.off = true;</script> -->
+</html>
 
 
 
