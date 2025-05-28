@@ -1,33 +1,46 @@
 .chart-container {
     display: grid;
-    grid-template-columns: 49% 49%;
-    grid-template-rows: 47% 47%;
-    justify-content: space-between;
-    row-gap: 20px;
+    grid-template-columns: 50% 50%;
 }
-.chart {
-    /* border:1px solid red; */
-}
-#dashboard {
-    /* border:1px solid blue; */
+.chart-container > * {
+    background-color: #fff;
 }
 .plot-chart {
     border:2px solid #537D5D;
     border-radius: 5px;
     padding: 20px;
 }
+.plot-chart canvas {
+    padding-top:20px;
+}
 .plot-chart h3 {
-    /* margin-inline-start:auto; */
     color:#537D5D;
     margin:0;
     text-align: left;
 }
-#sales-profit {
-    /* background-color: #FFF0BD; */
-}
-#myChart4 {
-    justify-self: center;
+#bar-line-container {
+   row-gap: 20px;;
+   display: grid;
+   grid-template-columns: 100%;
+}#pie-chart {
+    margin-left:20px;
+}#myChart4 {
+    margin-top:40px;
+}#sales-profit-header-container{
     display: flex;
-    /* margin:10px; */
-    padding:20px;
+    justify-content: space-between;
+    padding-bottom: 10px;;
+    border-bottom:2px solid #537D5D;
+}#sales-profit-header-container .dropdown-chart{
+    padding:0px 10px;
+    border-radius:5px;
+    outline:none;
+    border:1px solid #00a651;
+    color: #00a651;
+    font-size: 1.1em;
+}
+#sales-profit-header p {
+    margin: 0;
+    padding: 0;
+    color: #537D5D;
 }

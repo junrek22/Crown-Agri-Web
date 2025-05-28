@@ -99,6 +99,7 @@
 
 <script src="views/scripts/middleware-login.js"></script>
 <script src="views/scripts/middleware-userCRUD.js"></script>
+<script src="views/scripts/chart-functions.js"></script>
 
 <!-- ADDITIONAL SCRIPTS -->
 <script src="plugins/assets/js/gsap/TweenMax.min.js"></script>
