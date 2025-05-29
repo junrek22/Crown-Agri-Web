@@ -6,7 +6,7 @@ class AdminModel {
         $db = (new Connection)->connection();
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $db->prepare("INSERT INTO loginAuth (username, password, user_type, userAuth) VALUES (:username, :password, :user_type, :userAuth)");
-        $user_type = 'user';
+        $user_type = 'managers';
         $userAuth = (string)(date('m')."-".rand(111, 999)."-".rand(1111, 9999));
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);

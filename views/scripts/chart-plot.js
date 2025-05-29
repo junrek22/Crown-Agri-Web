@@ -45,33 +45,45 @@ const getDataRevenue = getTotalSaleRevenue(labels_months);
 const borderWidth = 3;
 const randomData = getRandomData(labels_months.length, labels_tags.length, 500, 10000);
 // const randomData1 = getRandomData(4, 4, 500, 10000);
-var chart1 = {
+const bgcolor = {
+  oil: '#328E6E',
+  seed: '#67AE6E',
+  chemical: '#90C67C',
+  fertilizer: '#537D5D'
+}
+const bdcolor = {
+  oil: '#537D5D',
+  seed: '#73946B',
+  chemical: '#9EBC8A',
+  fertilizer: '#626F47'
+}
+var bar_chart = {
   type: 'bar',
   data: {
     labels: labels_months,
     datasets: [{
         label: labels_tags[0],
         data:randomData[0],
-        backgroundColor: ['#328E6E',],
-        borderColor: ['#537D5D'],
+        backgroundColor: bgcolor.oil,
+        borderColor: bdcolor.oil,
         borderWidth: borderWidth,
     },{
         label:labels_tags[1],
         data:randomData[1],
-        backgroundColor: ['#67AE6E',],
-        borderColor: ['#73946B'],
+        backgroundColor: bgcolor.seed,
+        borderColor: bdcolor.seed,
         borderWidth: borderWidth,
     },{
         label: labels_tags[2],
         data:randomData[2],
-        backgroundColor: ['#90C67C',],
-        borderColor: ['#9EBC8A'],
+        backgroundColor: bgcolor.chemical,
+        borderColor: bdcolor.chemical,
         borderWidth: borderWidth,
     },{
         label: labels_tags[3],
         data:randomData[3],
-        backgroundColor: ['#E1EEBC',],
-        borderColor: ['#D2D0A0'],
+        backgroundColor: bgcolor.fertilizer,
+        borderColor: bdcolor.fertilizer,
         borderWidth: borderWidth,
     }],
     font :{
@@ -118,17 +130,17 @@ var chart1 = {
   }
 }
 
-var chart3 = {
+var line_chart_dashboard = {
   type:'line',
   data : {
     labels: labels_months,
     datasets: [{
       label: 'Sale Forecasting',
       data: getDataRevenue,
-      borderColor: 'blue',
+      borderColor: '#00a651',
       tension: 0.1,
-      backgroundColor:'#FFE99A',
-      fill: true
+      backgroundColor:'#ECFAE5',
+      fill: true,
     }]
   },
   options: {
@@ -162,23 +174,26 @@ var chart3 = {
     },
   }
 }
-const chart4 = {
+const pie_chart = {
   type: 'pie',
   data: {
-      labels: [
-      'Oil',
-      'Fertilizer',
-      'Seeds',
-      'Chemicals',
-    ],
+    labels: labels_tags,
     datasets: [{
       // label: 'My First Dataset',
-      data: [300, 50, 100],
+      data: [300, 50, 100, 250],
       backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)'
+        bgcolor.oil,
+        bgcolor.seed,
+        bgcolor.chemical,
+        bgcolor.fertilizer,
       ],
+      borderColor: [
+        bdcolor.oil,
+        bdcolor.seed,
+        bdcolor.chemical,
+        bdcolor.fertilizer,
+      ],
+      borderWidth:borderWidth,
       hoverOffset: 4,
     }]
   },
@@ -191,15 +206,72 @@ const chart4 = {
           const total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
           const percentage = (value / total * 100).toFixed(1) + "%";
           //  console.log(context.chart);
-          return `${label}\n${percentage}%`;
+          return `${label}\n${percentage}`;
         },
         color: '#fff',
         font: {
           weight: 'bold',
-          size: 14
+          size: 12
         }
       },
+      legend:{
+        labels :{
+          font:{
+            weight:'bold'
+          },
+          color: '#537D5D',
+        },
+        // position:'right',
+      }
     }
   },
   plugins: [ChartDataLabels],
 };
+
+var line_chart_sales_report = {
+  type:'line',
+  data : {
+    labels: labels_months,
+    datasets: [{
+      label: 'Total Sales Revenue',
+      data: getDataRevenue,
+      borderColor: '#00a651',
+      tension: 0.1,
+      backgroundColor:'#ECFAE5',
+      fill: true,
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          callback: function(value) {
+            return '₱'+value.toLocaleString(); // Add comma formatting
+          },
+          font: {
+            size: 14,
+            weight: 'bold',
+          },
+          color: '#537D5D',
+        },
+        grid: {
+          borderColor: 'black',
+          borderWidth: 2
+        },
+      },
+      x: {
+        grid: {
+          display: false
+        },
+        ticks: {
+          font: {
+            size: 14
+          }
+        },
+        ticks :{font: {weight: 'bold'}, color: '#537D5D'},
+      }
+    },
+  }
+}

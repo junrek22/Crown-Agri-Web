@@ -1,0 +1,28 @@
+#file-uploader{
+    padding:5px;
+    border:1px solid #00a651;
+    cursor: pointer;
+}#label-upload{
+    font-size: 1em;
+    color: #00a651;
+    text-align: end;
+}#file-uploader:hover , #file-uploader::-webkit-file-upload-button:hover{
+    background-color: #00a651;
+    color: #fff;
+    cursor: pointer;
+}
+#file-uploader::-webkit-file-upload-button {
+  color: #00a651;
+  padding:5px 20px;
+  border:none;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: none;
+}
+.report-dropdown {
+    border:1px solid black;
+}#sales-report-contaner-graph {
+    column-gap: 20px;;
+    display: grid;
+    grid-template-columns: 49% 49%;
+}

@@ -1,22 +1,20 @@
 <?php session_start();
-    $page = isset($_GET['route']) ? $_GET['route'] : '';
-    $routes_admin = ['dashboard', 'user-register'];
-    $routes_users = ['home'];
-    if($page == 'logout') {
-        $_SESSION = [];
-        session_destroy();
-    }
     $session_login = isset($_SESSION['login']) ? $_SESSION['login'] : false;
     $session_user_type = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : "Unknown";
+    $page = isset($_GET['route']) ? $_GET['route'] : '';
+    $routes_admin = ['dashboard', 'user-register', "m-sales-report","a-sales-report", "sales-forecast"];
+    $routes_users = ['home'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page</title>
+    <title>CATCORP inc.</title>
     <!-- SCRIPTS AND STYLES THAT NEED TO LOAD FIRST -->
 
+    <!-- FONTAWESOME ICONS -->
+     
     <!-- JQUERY LIBRARY -->
     <script src="plugins/assets/js/jquery-1.11.3.min.js"></script>
      <!-- SWEET ALERT  -->
@@ -26,7 +24,7 @@
     <link rel="stylesheet" href="views/styles/data-tables.css">
     <!-- BOOTSTRAP -->
     <script src="plugins/assets/js/bootstrap.js"></script>
-    <?php if(($session_login && $session_user_type == 'admin') && (in_array($page, array_merge($routes_admin, $routes_users)) || $page == '')): ?>
+    <?php if($session_login && (in_array($page, array_merge($routes_admin, $routes_users)) || $page == '')): ?>
         <!-- DASHBOARD STYLES AND ANIMATION -->
         <link rel="stylesheet" href="plugins/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
         <link rel="stylesheet" href="plugins/assets/css/font-icons/entypo/css/entypo.css">
@@ -56,22 +54,22 @@
 <body class="page-body">
     <?php if($session_login && (in_array($page, array_merge($routes_admin, $routes_users)) || $page == '')): ?>
     <div class="page-container">
-        <?php include 'components/sidebar.php';?>
+        <?php include 'components/'.$session_user_type.'/sidebar.php';?>
         <!-- Main Content -->
         <div class="main-content">
+            <?php include 'components/pageHeader.php';?>
             <?php $page = isset($_GET['route']) ? $_GET['route'] : 'dashboard';
                 if($session_user_type == 'admin'){
-                    include 'components/adminHeader.php';
                     if(in_array($page, $routes_admin)){
-                        include 'components/'.$page.'.php';
+                        include 'components/admin/'.$page.'.php';
                     }else{
-                        include 'components/dashboard.php';
+                        include 'components/admin/dashboard.php';
                     }
-                }else if($session_user_type == 'user'){
+                }else if($session_user_type == 'managers'){
                     if(in_array($page, $routes_users)){
-                        include 'components/'.$page.'.php';
+                        include 'components/managers/'.$page.'.php';
                     }else{
-                        include 'components/404.php';
+                        include 'components/managers/dashboard.php';
                     }
                 }else{
                     include 'components/404.php';
@@ -95,11 +93,17 @@
 </body>
 
 <!-- MY SCRIPTS AND STYLES -->
-<link rel="stylesheet" type="text/css" href="views/styles/dashboard.css">
 
 <script src="views/scripts/middleware-login.js"></script>
 <script src="views/scripts/middleware-userCRUD.js"></script>
 <script src="views/scripts/chart-functions.js"></script>
+
+
+<link rel="stylesheet" href="views/styles/global.css">
+<link rel="stylesheet" href="views/styles/user-register.css">
+<link rel="stylesheet" href="views/styles/sales-report.css">
+<link rel="stylesheet" type="text/css" href="views/styles/dashboard.css">
+
 
 <!-- ADDITIONAL SCRIPTS -->
 <script src="plugins/assets/js/gsap/TweenMax.min.js"></script>
@@ -127,6 +131,14 @@
 
 <!-- GLOBAL SCRIPT -->
 <!-- <script>jQuery.fx.off = true;</script> -->
+
+<!-- <script>
+    $(document).ready(function(){
+        $("#logout").click(function(){
+            window.location.href = "views/components/logout.php";
+        })
+    });
+</script> -->
 </html>
 
 

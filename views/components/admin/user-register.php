@@ -7,7 +7,7 @@
                 </div>
             </div>
             <div class="panel-body">
-                <div class="panel-design">
+                <div class="panel-design-global item-flex-end">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create_user_modal">
                         Create Manager
                     </button>
@@ -71,29 +71,5 @@
     </div>
 </div>
 <style>
-    .panel-design {
-        border-bottom:1px solid #00a651;
-        border-top:1px solid #00a651;
-        padding:15px 0px;
-        margin-bottom:15px;
-        display:flex;
-        justify-content:flex-end;
-    }
-    #form-createUser input, #form-createUser select {
-        padding:10px;
-        display:block;
-        margin:10px 10px 10px 0px;
-        width:300px;
-        border-radius:5px;
-        outline:none;
-        border:1px solid #00a651;
-        color: #00a651;
-    }.modal-create-user {
-        display: table;
-        width: auto;
-        /* max-width: 100%; */
-        /* max-width: 90vw;  */
-    }#td-buttons a{
-        margin:0px 5px;
-    }
+
 </style>

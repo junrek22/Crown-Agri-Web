@@ -37,8 +37,8 @@
                     <div class="sui-normal">
                         <a href="#" class="user-link">
                             <img src="plugins/assets/images/admin-logo.png" width="80" alt="" class="img-circle" />
-                            <span>Admin,</span>
-                            <strong>Ann Smith</strong>
+                            <span>Manager,</span>
+                            <strong>John Doe</strong>
                         </a>
                     </div>
 
@@ -70,36 +70,14 @@
                         </li>
                     </li>
                     <li class="has-sub">
-                        <a href="layout-api.html">
-                            <i class="entypo-layout"></i>
-                            <span class="title">User management</span>
-                        </a>
-                        <ul>
-                            <li><a href="user-register"><span class="title">User Creation & Registration</span></a></li>
-                            <li><a href="#"><span class="title">User role & Permission Assignment</span></a></li>
-                            <li><a href="#"><span class="title">User Status Control</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="has-sub">
-                        <a href="#">
-                            <i class="entypo-layout"></i>
-                            <span class="title">Sales Performance</span>
-                        </a>
-                        <ul>
-                            <li><a href="#"><span class="title">Sales Volume by Product</span></a></li>
-                            <li><a href="#"><span class="title">Sales Trends and Forecasting</span></a></li>
-                            <li><a href="#"><span class="title">Sales Growth Rate</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="has-sub">
                         <a href="#">
                             <i class="entypo-mail"></i>
                             <span class="title">Sales Report</span>
                             <!-- <span class="badge badge-secondary">8</span> -->
                         </a>
                         <ul>
-                            <li><a href="#"><span class="title">Monthly Report</span></a></li>
-                            <li><a href="#"><span class="title">Quarterly Report</span></a></li>
+                            <li><a href="m-sales-report"><span class="title">Monthly Report</span></a></li>
+                            <!-- <li><a href="#"><span class="title">Quarterly Report</span></a></li> -->
                             <li><a href="#"><span class="title">Annually Report</span></a></li>
                         </ul>
                     </li>    

@@ -1,21 +1,53 @@
-body {
+.dropdown-global{
+    border-radius:5px;
+    outline:none;
+    border:1px solid #00a651;
+    color: #00a651;
+    font-size: 1.1em;
+}
+/* DROPDOWN */
+.adjust-vertical-pad {
+    padding:10px 10px;
+    margin:auto 0px;
+}
+.adjust-vertical-default {
+    padding:0px 10px;
+}
+.plot-chart h3 {
+    color:#537D5D;
     margin:0;
-    padding:0;
-    font-family: sans-serif;
+    text-align: left;
 }
-.textDesign {
-    font-family: sans-serif;
-}
-#screen-wrapper {
-    display:flex;
-    height:100vh;
-    width:100vw;
-    flex-direction: row;
-}
-#component-wrapper {
-    width: 100%;
-    overflow-y: auto;
-}
-#component-contents {
+.plot-chart {
+    border:2px solid #537D5D;
+    border-radius: 5px;
     padding: 20px;
+}
+#Globalplotchart-header p {
+    margin: 0;
+    padding: 0;
+    color: #537D5D;
+}
+#Globalplotchart-header-container{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;;
+    border-bottom:2px solid #537D5D;
+}
+.panel-design-global {
+    border-bottom:1px solid #00a651;
+    border-top:1px solid #00a651;
+    padding:15px 0px;
+    margin-bottom:15px;
+}
+.item-space-between {
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.item-flex-end {
+    display:flex;
+    justify-content: flex-end;
+}.dropdown-container > select{
+    margin:0px 3px;
 }

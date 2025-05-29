@@ -5,18 +5,8 @@
 .chart-container > * {
     background-color: #fff;
 }
-.plot-chart {
-    border:2px solid #537D5D;
-    border-radius: 5px;
-    padding: 20px;
-}
 .plot-chart canvas {
     padding-top:20px;
-}
-.plot-chart h3 {
-    color:#537D5D;
-    margin:0;
-    text-align: left;
 }
 #bar-line-container {
    row-gap: 20px;;
@@ -26,21 +16,4 @@
     margin-left:20px;
 }#myChart4 {
     margin-top:40px;
-}#sales-profit-header-container{
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 10px;;
-    border-bottom:2px solid #537D5D;
-}#sales-profit-header-container .dropdown-chart{
-    padding:0px 10px;
-    border-radius:5px;
-    outline:none;
-    border:1px solid #00a651;
-    color: #00a651;
-    font-size: 1.1em;
-}
-#sales-profit-header p {
-    margin: 0;
-    padding: 0;
-    color: #537D5D;
 }

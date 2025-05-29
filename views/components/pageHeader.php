@@ -13,7 +13,7 @@
             </li>
             <!-- Logout Button -->
             <li style="display: inline-block;">
-                <a href="logout" style="padding: 0;">
+                <a href="views/components/logout.php" style="padding: 0;">
                     <i class="entypo-logout"></i> Log Out
                 </a>
             </li>
