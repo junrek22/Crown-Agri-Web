@@ -46,8 +46,12 @@
                     </div>
                 </div>
                 <div class="plot-chart" id="pie-chart">
-                    <h3>RANKED OF MOST PURCHASED PRODUCT</h3>
-                    <p>Latest, May 2025</p>
+                    <div id="Globalplotchart-header-container">
+                        <div id="Globalplotchart-header">
+                            <h3>RANKED OF MOST PURCHASED PRODUCT</h3>
+                            <p>Latest, May 2025</p>
+                        </div>
+                    </div>
                     <canvas id="myChart4" class="chart"></canvas>
                 </div>
             </div>

@@ -102,6 +102,7 @@
 <link rel="stylesheet" href="views/styles/global.css">
 <link rel="stylesheet" href="views/styles/user-register.css">
 <link rel="stylesheet" href="views/styles/sales-report.css">
+<link rel="stylesheet" href="views/styles/sales-forecast.css">
 <link rel="stylesheet" type="text/css" href="views/styles/dashboard.css">
 
 

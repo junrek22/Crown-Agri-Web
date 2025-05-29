@@ -50,4 +50,10 @@
     justify-content: flex-end;
 }.dropdown-container > select{
     margin:0px 3px;
+}.button-margin-left{
+    margin-left: 20px;
+}.hide-items{
+    display:none;
+}.panel-title{
+    padding:0;
 }

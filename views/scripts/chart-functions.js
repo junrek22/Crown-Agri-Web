@@ -19,8 +19,8 @@ $(document).ready(function() {
         line_chart_dashboard.data.datasets[0].data = new_data_test;
         char_line.update();
     })
-    $("#report-charts-change").change(function(){
-        let selectedYear = $("#report-charts-change option:selected").val();
+    $("#report-charts-change_a").change(function(){
+        let selectedYear = $("#report-charts-change_a option:selected").val();
         let labels_months = getMonthLabel(selectedYear);
         const new_data_test = getTotalSaleRevenue(labels_months);
 
@@ -31,12 +31,16 @@ $(document).ready(function() {
             bar_chart.data.datasets[j].label = labels_tags[j];
         }
 
-        
         line_chart_sales_report.data.labels = labels_months;
         line_chart_sales_report.data.datasets[0].data = new_data_test;
         bar_chart.data.labels =labels_months;
 
         char_bar.update();
         char_line.update();
+    })
+     $("#report-charts-change_m").change(function(){
+        let newRandomData = getLinearRandData(labels_tags.length, 100, 20000);
+        bar_chart_sales_report_m.data.datasets[0].data = newRandomData;
+        char_bar.update();
     })
 });

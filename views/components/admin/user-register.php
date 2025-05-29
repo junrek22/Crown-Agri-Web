@@ -33,7 +33,7 @@
                             <td><?php echo $value['first_name'];?></td>
                             <td><?php echo $value['middle_name'];?></td>
                             <td><?php echo $value['last_name'];?></td>
-                            <td id="td-buttons"><a type="button" class="btn btn-success">Update</a><a type="button" class="btn btn-danger deleteButton">Delete</a></td>
+                            <td id="td-buttons"><a type="button" class="btn btn-success UpdateButton">Update</a><a type="button" class="btn btn-danger deleteButton">Delete</a></td>
                         </tr>
                        <?php endforeach; 
                        endif;?>
@@ -53,7 +53,7 @@
             </div>
             <div class="modal-body">
                 <!-- <form action="" method="POST"> -->
-                <div id="form-createUser">
+                <div id="form-User">
                     <input type="text" placeholder="First name" id="first-name" required>
                     <input type="text" placeholder="Middle name" id="mid-name" required>
                     <input type="text" placeholder="Last name" id="last-name" required>
@@ -66,6 +66,29 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Sign up</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="update_user_modal">
+    <div class="modal-dialog modal-update-user ">
+        <form id="updatePost" method="POST" class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" style="font-size:1.5em; color: #00a651;">Update manager</h4>
+            </div>
+            <div class="modal-body">
+                <div id="form-User">
+                    <!-- <input type="text" placeholder="Username" id="update_username" disabled> -->
+                    <input type="text" placeholder="First name" id="update_first-name" required>
+                    <input type="text" placeholder="Middle name" id="update_mid-name" required>
+                    <input type="text" placeholder="Last name" id="update_last-name" required>   
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Update</button>
             </div>
         </form>
     </div>

@@ -1,4 +1,4 @@
-#form-createUser input, #form-createUser select {
+#form-User input, #form-User select {
     padding:10px;
     display:block;
     margin:10px 10px 10px 0px;
@@ -7,7 +7,7 @@
     outline:none;
     border:1px solid #00a651;
     color: #00a651;
-}.modal-create-user {
+}.modal-create-user,.modal-update-user {
     display: table;
     width: auto;
 }#td-buttons a{

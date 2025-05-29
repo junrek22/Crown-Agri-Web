@@ -1,5 +1,5 @@
 #file-uploader{
-    padding:5px;
+    padding:0px;
     border:1px solid #00a651;
     cursor: pointer;
 }#label-upload{
@@ -21,8 +21,10 @@
 }
 .report-dropdown {
     border:1px solid black;
-}#sales-report-contaner-graph {
+}#sales-report-container-graph {
     column-gap: 20px;;
     display: grid;
     grid-template-columns: 49% 49%;
+}.panel-items-container {
+    display: flex;
 }

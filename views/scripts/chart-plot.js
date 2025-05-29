@@ -1,3 +1,4 @@
+const getLabelYear = ['2020','2021','2022','2023','2024','2025', '2026'];
 function getRandomData(column, row, min, max) {
   const data = [];
   for(let j = 0; j < row; j++){ 
@@ -5,6 +6,13 @@ function getRandomData(column, row, min, max) {
      for (let i = 0; i < column; i++) {
       data[j][i] = (Math.floor(Math.random() * (max - min + 1)) + min);
     }
+  }
+  return data;
+}
+function getLinearRandData(row, min, max) {
+  const data = [];
+  for(let i = 0; i < row; i++){
+    data[i] = (Math.floor(Math.random() * (max - min + 1)) + min);
   }
   return data;
 }
@@ -19,7 +27,6 @@ function getTotalSaleRevenue(labelOfMonths){
     }
     dataRevenue[i] = getRevenueMonth;
   }
-  console.log(dataRevenue)
   return dataRevenue;
 }
 function getMonthLabel(year){
@@ -57,6 +64,8 @@ const bdcolor = {
   chemical: '#9EBC8A',
   fertilizer: '#626F47'
 }
+const bgcolor_m = ['#328E6E','#67AE6E', '#90C67C', '#537D5D'];
+const bdcolor_m = ['#537D5D','#73946B', '#9EBC8A', '#626F47'];
 var bar_chart = {
   type: 'bar',
   data: {
@@ -125,6 +134,64 @@ var bar_chart = {
           },
           color: '#537D5D',
         }
+      }
+    }
+  }
+}
+
+var bar_chart_sales_report_m= {
+  type: 'bar',
+  data: {
+    labels: labels_tags,
+    datasets: [{
+        label: "",
+        data:randomData[0],
+        backgroundColor: bgcolor_m,
+        borderColor: bdcolor_m,
+        borderWidth: borderWidth,
+    }],
+    font :{
+      weight:'bold',
+    }
+  },
+  options: {
+    // responsive: false, // <--- disables responsiveness
+    // maintainAspectRatio: false, // optional: disable aspect ratio locking
+    scales: {
+      y: {
+        beginAtZero: true,
+        grid: {
+          lineWidth: 2,         // Thicker grid lines
+          color: '#ccc',
+          display: false, 
+        },
+        ticks: {
+          font: {
+            size: 14,           // Larger font size for labels
+            weight: 'bold'      // Optional: bold text
+          },
+          color: '#537D5D',        // Optional: font color
+          callback: function(value) {
+            return '₱'+value.toLocaleString(); // Optional: add degree symbol
+          }
+        }
+      },
+      x : {
+        grid: {display: false},
+        ticks :{font: {weight: 'bold'}, color: '#537D5D'}
+      }
+    },
+    plugins : {
+      legend:{
+        labels :{
+          // font:{
+          //   weight:'bold'
+          // },
+          // color: '#537D5D',
+          boxWidth: 0, // hides the colored box
+          color: '#000',
+        },
+        backgroundColor:'none',
       }
     }
   }
@@ -205,7 +272,6 @@ const pie_chart = {
           const label = context.chart.data.labels[context.dataIndex];
           const total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
           const percentage = (value / total * 100).toFixed(1) + "%";
-          //  console.log(context.chart);
           return `${label}\n${percentage}`;
         },
         color: '#fff',
@@ -221,9 +287,10 @@ const pie_chart = {
           },
           color: '#537D5D',
         },
-        // position:'right',
+        // position:'bottom',
       }
-    }
+    },
+    
   },
   plugins: [ChartDataLabels],
 };
@@ -243,6 +310,110 @@ var line_chart_sales_report = {
   },
   options: {
     responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          callback: function(value) {
+            return '₱'+value.toLocaleString(); // Add comma formatting
+          },
+          font: {
+            size: 14,
+            weight: 'bold',
+          },
+          color: '#537D5D',
+        },
+        grid: {
+          borderColor: 'black',
+          borderWidth: 2
+        },
+      },
+      x: {
+        grid: {
+          display: false
+        },
+        ticks: {
+          font: {
+            size: 14
+          }
+        },
+        ticks :{font: {weight: 'bold'}, color: '#537D5D'},
+      }
+    },
+  }
+}
+
+var line_chart_sales_report_m = {
+  type:'line',
+  data : {
+    labels: labels_months,
+    datasets: [{
+      label: 'Total Sales Revenue',
+      data: getDataRevenue,
+      borderColor: '#00a651',
+      tension: 0.1,
+      backgroundColor:'#ECFAE5',
+      fill: true,
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          callback: function(value) {
+            return '₱'+value.toLocaleString(); // Add comma formatting
+          },
+          font: {
+            size: 14,
+            weight: 'bold',
+          },
+          color: '#537D5D',
+        },
+        grid: {
+          borderColor: 'black',
+          borderWidth: 2
+        },
+      },
+      x: {
+        grid: {
+          display: false
+        },
+        ticks: {
+          font: {
+            size: 14
+          }
+        },
+        ticks :{font: {weight: 'bold'}, color: '#537D5D'},
+      }
+    },
+  }
+}
+const getDumActualData = getLinearRandData(getLabelYear.length, 500, 10000);
+const getDumPredictData = getLinearRandData(getLabelYear.length, 500, 10000);
+var line_chart_forecast = {
+  type:'line',
+  data : {
+    labels: getLabelYear,
+    datasets: [{
+      label:'Actual Sale Revenue',
+      data: getDumActualData,
+      borderColor: '#5A827E',
+      tension: 0.1,
+      backgroundColor:'#E7EFC7',
+      // fill: true,
+    },{
+      label: "Predicted Sale revenue",
+      data: getDumPredictData,
+      borderColor: '#EC5228',
+      tension: 0.1,
+      backgroundColor:'#EF965150',
+      fill: '-1',
+    }]
+  },
+  options: {
+    // responsive: false,
     scales: {
       y: {
         beginAtZero: true,

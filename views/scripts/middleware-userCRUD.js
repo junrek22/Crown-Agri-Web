@@ -67,6 +67,48 @@ $(document).ready(function() {
     });
    
   });
+  let fetchDataStored = [];
+  $('#userTable tbody').on('click', '.UpdateButton', function () {
+    let getRow = table.row($(this).parents('tr'));
+    let dataRow = getRow.data();
+    $('#update_first-name').val(dataRow[1]);
+    $('#update_mid-name').val(dataRow[2]);
+    $('#update_last-name').val(dataRow[3]);
+    $('#update_user_modal').modal('show');
+    fetchDataStored[0] = $('#update_first-name').val();
+    fetchDataStored[1] = $('#update_mid-name').val();
+    fetchDataStored[2] = $('#update_last-name').val();
+  });
+   $("#updatePost").submit(function(e) {
+    e.preventDefault();
+
+    let u_f_name = $('#update_first-name').val();
+    let u_m_name = $('#update_mid-name').val();
+    let u_l_name = $('#update_last-name').val();
+    if(fetchDataStored[0] == u_f_name || 
+      fetchDataStored[1] == u_m_name|| 
+      fetchDataStored[2] == u_l_name) return alert("THE DATA IS STILL THE SAME");
+    
+    const updateUser = new FormData();
+    updateUser.append("u_fname", u_f_name);
+    updateUser.append("u_mname", u_m_name );
+    updateUser.append("u_lname", u_l_name);
+
+    $.ajax({
+      type: 'POST',
+      url :'',
+      data:updateUser,
+      processData: false,
+      contentType: false,
+      success:function(){
+
+      }
+    });
+
+  
+      
+    
+   });
   $("#signUpPost").submit(function(e) {
     e.preventDefault();
     
